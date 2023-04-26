@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  /* this is to enable the 100% height on the body element */
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  background-color:black;
+}
+
+.universe {
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+  
+  background-color:black;
+  background-image:
+  radial-gradient(rgb(80, 80, 80), rgba(255,255,255,.2) 1px, transparent 4px),
+  radial-gradient(rgb(80, 79, 79), rgba(255,255,255,.15) 1px, transparent 3px),
+  radial-gradient(rgb(98, 98, 98), rgba(255,255,255,.1) 1px, transparent 4px),
+  radial-gradient(rgba(70, 70, 70, 0.4), rgba(255,255,255,.1) 2px, transparent 3px);
+  background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+  background-position: 0 0, 30px 63px, 133px 273px, 73px 103px;
+}
+
+.sun {
+  width: 10vh;
+  height: 10vh;
+
+  position: absolute;
+  left: calc(50% - 5vh);
+  top: calc(50% - 5vh);
+
+  animation: 3s infinite alternate sunRadiation;  
+  
+  background-color: rgb(255, 213, 0);
+  background-image: radial-gradient(circle at 100%, rgba(255, 0, 0, 0.5), transparent);
+  border-radius: 50%;
+}
+
+.earth {
+  width: 10vh;
+  height: 10vh;
+
+  position: absolute;
+  left: 40vh;
+  transform-origin: -35vh 5vh;
+
+  background-color: rgb(29, 78, 162);
+  background-image: radial-gradient(circle at -70%, rgba(250, 250, 200, 0.5), transparent);
+  border-radius: 50%;
+
+  animation-name: planetRotation;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes planetRotation {
+  from {
+    transform: scale(.5) rotate(0);
+  }
+  to {
+    transform: scale(.5) rotate(1turn);
+  }
+}
+
+@keyframes sunRadiation {
+  from {
+    box-shadow: 2px 2px 20px yellow;
+  }
+  to {
+    box-shadow: -2px -2px 20px red;
+  }
+}
