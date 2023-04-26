@@ -1,3 +1,9 @@
+:root {
+  --color: black;
+  --color-earth: rgb(29, 78, 162);
+  --planet-size: 20;
+}
+
 * {
   box-sizing: border-box;
 }
