@@ -1,7 +1,13 @@
+/* when you declare the css variables
+   in the :root element,
+   the are accessible in all the rules of your document
+*/
 :root {
+  /* prefix the variable name with two em dashes -- */
   --color: black;
   --color-earth: rgb(29, 78, 162);
-  --planet-size: 20;
+  --planet-size: 10vh;
+  --planet-offset: 10vh;
 }
 
 * {
@@ -16,7 +22,9 @@ html {
 body {
   margin: 0;
   height: 100%;
-  background-color:black;
+
+  /* wrap your variable name in var() */
+  background-color: var(--color);
 }
 
 .universe {
@@ -25,7 +33,7 @@ body {
 
   position: relative;
   
-  background-color:black;
+  background-color:var(--color);
   background-image:
   radial-gradient(rgb(80, 80, 80), rgba(255,255,255,.2) 1px, transparent 4px),
   radial-gradient(rgb(80, 79, 79), rgba(255,255,255,.15) 1px, transparent 3px),
@@ -36,12 +44,12 @@ body {
 }
 
 .sun {
-  width: 10vh;
-  height: 10vh;
+  width: var(--planet-size);
+  height: var(--planet-size);
 
   position: absolute;
-  left: calc(50% - 5vh);
-  top: calc(50% - 5vh);
+  left: calc(50% - (var(--planet-size) / 2));
+  top: calc(50% - (var(--planet-size) / 2));
 
   animation: 3s infinite alternate sunRadiation;  
   
@@ -51,12 +59,15 @@ body {
 }
 
 .earth {
-  width: 10vh;
-  height: 10vh;
+  width: var(--planet-size);
+  height: var(--planet-size);
+
+  /* here we can reassign the variable value */
+  --planet-offset: 40vh;
 
   position: absolute;
-  left: 40vh;
-  transform-origin: -35vh 5vh;
+  left: var(--planet-offset);
+  transform-origin: calc((var(--planet-size) / 2) - var(--planet-offset)) calc(var(--planet-size) / 2);
 
   background-color: rgb(29, 78, 162);
   background-image: radial-gradient(circle at -70%, rgba(250, 250, 200, 0.5), transparent);
